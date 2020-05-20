@@ -1,6 +1,56 @@
 .rolled {
     height: 80px;
     width: 80px;
-    border: 2px solid black;
-    font-weight: bolder;
 }
+
+.dragonRoll {
+    background-image: url('./assets/dragon-head.svg');
+    height: 5em;
+    width: 5em;
+}
+
+#d6One {
+    background-image: url('./assets/1d6-1.svg');
+    height: 4em;
+    width: 4em;
+}
+#d6Two {
+    background-image: url('./assets/1d6-2.svg');
+    height: 4em;
+    width: 4em;
+}
+#d6Three {
+    background-image: url('./assets/1d6-3.svg');
+    height: 4em;
+    width: 4em;
+}
+#d6Four {
+    background-image: url('./assets/1d6-4.svg');
+    height: 4em;
+    width: 4em;
+}
+#d6Five {
+    background-image: url('./assets/1d6-5.svg');
+    height: 4em;
+    width: 4em;
+}
+
+.rolledD1 {
+    background-image: url('./assets/2d6-1.svg') ;
+}
+.rolledD2 {
+    background-image: url('./assets/2d6-2.svg') ;
+}
+.rolledD3 {
+    background-image: url('./assets/2d6-3.svg') ;
+}
+.rolledD4 {
+    background-image: url('./assets/2d6-4.svg') ;
+}
+.rolledD5 {
+    background-image: url('./assets/2d6-5.svg') ;
+}
+.rolledD6 {
+    background-image: url('./assets/2d6-6.svg') ;
+}
+

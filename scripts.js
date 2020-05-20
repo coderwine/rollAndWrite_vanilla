@@ -1,53 +1,22 @@
+//! Rolled Displayed Class Sets
+roll1 = 'rolledD1';
+roll2 = 'rolledD2';
+roll3 = 'rolledD3';
+roll4 = 'rolledD4';
+roll5 = 'rolledD5';
+roll6 = 'rolledD6';
 
-// twenty = document.getElementById('roll20');
-// twelve = document.getElementById('roll12');
-// ten = document.getElementById('roll10');
-// eight = document.getElementById('roll8');
-// four = document.getElementById('roll4');
+
 // random = document.getElementById('rollRandom');
 // fire = document.getElementById('rollFire');
 six = document.getElementById('d6One');
 
-// twenty.addEventListener('click', rolling20);
-// twelve.addEventListener('click', rolling12);
-// ten.addEventListener('click', rolling10);
-// eight.addEventListener('click', rolling8);
-// four.addEventListener('click', rolling4);
 // random.addEventListener('click', rollingRandom);
 // fire.addEventListener('click', rollingFire);
 six.addEventListener('click', rolling6);
 
 // ROLLING FUNCTIONS
-// function rolling20() {
-//     let roll20 = Math.floor((Math.random() * 20) + 1);
-    
-//     setTimeout(() => {
-//         alert('rolling your d20...')
 
-//         // console.log(roll20);
-//         rolling();
-//     }
-
-//     ), 3000
-
-//     displayRoll(roll20)
-// };
-
-// function rolling12() {
-//     let roll12 = Math.floor((Math.random() * 12) + 1);
-//     console.log(roll12);
-//     displayRoll(roll12)
-// };
-// function rolling10() {
-//     let roll10 = Math.floor((Math.random() * 10) + 1);
-//     console.log(roll10);
-//     displayRoll(roll10)
-// };
-// function rolling8() {
-//     let roll8 = Math.floor((Math.random() * 8) + 1);
-//     console.log(roll8);
-//     displayRoll(roll8)
-// };
 function rolling6() {
 
     let roll6 = Math.floor((Math.random() * 6) + 1);
@@ -55,31 +24,39 @@ function rolling6() {
 
     displayRoll(roll6)
 };
-// function rolling4() {
-//     let roll4 = Math.floor((Math.random() * 4) + 1);
-//     console.log(roll4);
-//     displayRoll(roll4)
-// };
 
 
 //! DISPLAY
 function displayRoll(roll) {
     console.log('Display: ', roll)
-    
-    rollResult = document.createElement('button');
-    rollResult.className = 'col-md rolled btn';
-    rollResult.innerHTML = roll;
+    let rollDisplay;
 
+    roll === 1 ? rollDisplay = roll1 : 
+    roll === 2 ? rollDisplay = roll2 : 
+    roll === 3 ? rollDisplay = roll3 : 
+    roll === 4 ? rollDisplay = roll4 : 
+    roll === 5 ? rollDisplay = roll5 : 
+    roll === 6 ? rollDisplay = roll6 : 
+    rollDisplay = null;
+    
+    rollResult = document.createElement('div');
+    rollResult.className = `col-md rolled btn ${rollDisplay}` ;
+    rollResult.id = 'results';
     
     displayRollOne = document.getElementById('rollResults');
     displayRollOne.appendChild(rollResult);
 
-    while(displayRollOne.rollResult > 0) {
-        console.log('While: ', rollResult)
-        displayRollOne.removeChild(displayRollOne.rollResult);
+    console.log(displayRollOne)
+    console.log(displayRollOne.children.results)
+
+    while(rollResult != null) {
+        console.log('while: ', rollResult)
+        displayRollOne.removeChild(displayRollOne.children.results);
     }
 
-    rollResult.innerText = roll;
+    displayRollOne.appendChild(rollResult);
+
+    // rollResult.innerText = roll;
     
 }
 
