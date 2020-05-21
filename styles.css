@@ -1,56 +1,76 @@
-.rolled {
-    height: 80px;
-    width: 80px;
+body {
+    overflow: hidden;
 }
 
-.dragonRoll {
-    background-image: url('./assets/dragon-head.svg');
+.jumbotron {
+    top: 0;
+    /* position: fixed; */
+    width: 100vw;
+    text-align: center;
+    margin: .25em;
+}
+
+.navSetting {
+    position: fixed;
+    bottom: 0;
+    margin-top: .25em;
+    z-index: 1;
+    width: 100vw;
+    padding: 1em;
+}
+
+.rolled {
+    display: inline-block;
+    height: 2.5em;
+    width: 2.5em;
+    border: 1px solid black;
+}
+
+.diceSize {
+    height: 4em;
+    width: 4em;
+}
+
+#cupRoll {
+    /* background-image: url('./assets/d6Random-red.svg'); */
+    background-image: url('./assets/d6Random-white.svg');
     height: 5em;
     width: 5em;
 }
 
-#d6One {
+/* #d6One {
     background-image: url('./assets/1d6-1.svg');
-    height: 4em;
-    width: 4em;
 }
 #d6Two {
     background-image: url('./assets/1d6-2.svg');
-    height: 4em;
-    width: 4em;
 }
 #d6Three {
     background-image: url('./assets/1d6-3.svg');
-    height: 4em;
-    width: 4em;
 }
 #d6Four {
     background-image: url('./assets/1d6-4.svg');
-    height: 4em;
-    width: 4em;
 }
 #d6Five {
     background-image: url('./assets/1d6-5.svg');
-    height: 4em;
-    width: 4em;
-}
+} */
+
 
 .rolledD1 {
-    background-image: url('./assets/2d6-1.svg') ;
+    background-image: url('./assets/1d6-1.svg') ;
 }
 .rolledD2 {
-    background-image: url('./assets/2d6-2.svg') ;
+    background-image: url('./assets/1d6-2.svg') ;
 }
 .rolledD3 {
-    background-image: url('./assets/2d6-3.svg') ;
+    background-image: url('./assets/1d6-3.svg') ;
 }
 .rolledD4 {
-    background-image: url('./assets/2d6-4.svg') ;
+    background-image: url('./assets/1d6-4.svg') ;
 }
 .rolledD5 {
-    background-image: url('./assets/2d6-5.svg') ;
+    background-image: url('./assets/1d6-5.svg') ;
 }
 .rolledD6 {
-    background-image: url('./assets/2d6-6.svg') ;
+    background-image: url('./assets/1d6-6.svg') ;
 }
 
