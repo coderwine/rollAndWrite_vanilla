@@ -13,14 +13,25 @@ d6Two = document.getElementById('d6Two');
 d6Three = document.getElementById('d6Three');
 d6Four = document.getElementById('d6Four');
 d6Five = document.getElementById('d6Five');
-totalRoll = document.getElementById('totalRoll');
 
+bankValue = document.getElementById('bankedRolls');
+bankBtn = document.getElementById('bankRollbtn');
+currentRoll = document.getElementById('totalRoll');
+
+playerForm = document.getElementById('playerCountForm');
+playerCountBtn = document.getElementById('playerBtn');
+playerTable = document.getElementById('showTable');
+tableBody = document.getElementById('playerTableBody');
+
+//! Event Listeners
 cup.addEventListener('click', cupRoll);
-// d6One.addEventListener('click', diceOne);
-// d6Two.addEventListener('click', diceTwo);
-// d6Three.addEventListener('click', diceThree);
-// d6Four.addEventListener('click', diceFour);
-// d6Five.addEventListener('click', diceFive);
+// d6One.addEventListener('click', singleRoll);
+// d6Two.addEventListener('click', singleRoll);
+// d6Three.addEventListener('click', singleRoll);
+// d6Four.addEventListener('click', singleRoll);
+// d6Five.addEventListener('click', singleRoll);
+bankBtn.addEventListener('click', bankCount);
+playerCountBtn.addEventListener('click', playerStats);
 
 //! Empty Variables
 let dOne;
@@ -29,7 +40,51 @@ let dThree;
 let dFour;
 let dFive; 
 
-// ROLLING FUNCTIONS
+//! PLAYER SETUP
+// function setPlayers(x) {
+//     let playerCount;
+// }
+
+function playerStats() {
+    event.preventDefault();
+    console.log('Player Form: ', playerForm[2].checked)
+    let playerCheck;
+
+    playerForm[0].checked === true ? playerCheck = 1 :
+    playerForm[1].checked === true ? playerCheck = 2 :
+    playerForm[2].checked === true ? playerCheck = 3 :
+    playerForm[3].checked === true ? playerCheck = 4 :
+    null;
+
+    console.log('Player Check Value: ', playerCheck)
+
+    //? WORKING ON GENERATING A PLAYER TABLE
+    // let createElements = () => {
+    //     return 
+    //         let row = createElement('tr');
+    //         let head = createElement('th');
+    //         let data = createElement('td');
+    // }
+
+    // if(playerCheck === 1) {
+    //     createElements();
+    //     head.innerText = 'Player One'
+    //     data.id = 'playerOne'
+    //     data.innerText = 'test';
+        
+    //     tableBody.appendChild(row);
+    //     tableBody.tr.appendChild(head);
+    //     tableBody.tr.appendChild(data);
+    // } else {
+    //     null
+    // }
+
+    // playerForm.style = 'visibility: hidden';
+    // playerForm.style = 'display: none';
+    playerTable.style = 'visibility: visible'
+}
+
+//! ROLLING FUNCTIONS
 
 function cupRoll() {
     let roll = 1
@@ -43,20 +98,18 @@ function cupRoll() {
 
     console.log(cup[0], cup[1], cup[2], cup[3], cup[4]);
 
-    calcRolling(cup[0], cup[1], cup[2], cup[3], cup[4]);
     rollCheck(cup)
     displayRoll(cup[0], cup[1], cup[2], cup[3], cup[4]);
 
-    // displayRoll(roll6)
 };
 
 // let singleRoll =(d) => {
-//     ? This is for solo rolls
-//     let roll6 = Math.floor((Math.random() * 6) + 1);
-//     console.log(roll6);
+    // ? This is for solo rolls
+//     let d = Math.floor((Math.random() * 6) + 1);
+//     console.log(d);
 // }
 
-let rollCheck =(rollValue) => {
+function rollCheck(rollValue) {
     let rollCount = [];
 
     let check = rollValue.map( x => x === 1 ? rollCount.push(100) : x === 5 ? rollCount.push(50) : rollCount.push(0));
@@ -71,11 +124,28 @@ let rollCheck =(rollValue) => {
     console.log(total);
 
     calcRolling(total);
-
-    
 }
 
-let calcRolling = (total) => totalRoll.innerText = total;
+let calcRolling = (total) => currentRoll.innerText = total;
+
+function bankCount() {
+    let currentValue = currentRoll.textContent
+    console.log('Bank Btn: ', currentValue)
+
+    let addAmounts = (value) => {
+        let bankNumber = Number(bankValue.textContent);
+        let addTo = Number(value)
+
+        let total = bankNumber + addTo;
+        console.log('bankValue: ', typeof bankNumber)
+        console.log('Value: ', typeof addTo)
+        return bankValue.innerText = total;
+    }
+    addAmounts(currentValue);
+
+    //? THIS SHOULD ALSO CHANGE PLAYERS AFTER BANKING A TOTAL
+
+}
 
 //! DISPLAY
 function displayRoll(d1, d2, d3, d4, d5) {
@@ -108,34 +178,5 @@ function displayRoll(d1, d2, d3, d4, d5) {
     d6Three.className = `diceSize navbar-brand ${pipIMG[2]}`;
     d6Four.className = `diceSize navbar-brand ${pipIMG[3]}`;
     d6Five.className = `diceSize navbar-brand ${pipIMG[4]}`;
-        
-    // displayRollOne = document.getElementById('rollResults');
-    // displayRollOne.appendChild(rollOne);
-    // displayRollOne.appendChild(rollTwo);
-    // displayRollOne.appendChild(rollThree);
-    // displayRollOne.appendChild(rollFour);
-    // displayRollOne.appendChild(rollFive);
-
-    // rollOne.innerText = d1
-    // rollTwo.innerText = d2
-    // rollThree.innerText = d3
-    // rollFour.innerText = d4
-    // rollFive.innerText = d5
-
-    // console.log(displayRollOne)
-    // console.log(displayRollOne.children.results)
-
-    // totalRoll.innerText = roll;
     
 }
-
-//? NEED TO MAKE IT WHERE THE RESULTS REPLACE CURRENT ROLL
-
-
-// clearRoll = () => {
-//     let results = document.getElementById('rollResults');
-
-//     while(results.firstChild) {
-//         results.removeChild(firstChild);
-//     }
-// }

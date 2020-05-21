@@ -1,15 +1,63 @@
 body {
     overflow: hidden;
 }
+/* MODALS */
+.ruleModal {
+    background-image: url('./assets/rule-book_opt2.svg');
+    height: 2em;
+    width: 2em;
+    position: fixed;
+    margin: .5em;
+    right: .2em;
+    top: .1em;
+    z-index: 2;
+}
 
+.modalLists {
+    margin-left: .5em;
+    height: 3.25em;
+    width: 3.25em;
+}
+
+#linkedICON {
+    background-image: url('./assets/linkedin.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#githubICON {
+    background-image: url('./assets/github.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#instagramICON {
+    background-image: url('./assets/instagram.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* ROLL STATUS */
 .jumbotron {
     top: 0;
-    /* position: fixed; */
-    width: 100vw;
+    width: cover;
     text-align: center;
     margin: .25em;
 }
 
+/* PLAYER COUNT/STATS */
+.statBox {
+    margin: auto 0;
+}
+
+.statTable {
+    margin-top: .5em;
+}
+
+#showTable {
+    visibility: hidden;
+    /* display: none; */
+}
+
+/* DICE TRAY */
 .navSetting {
     position: fixed;
     bottom: 0;
