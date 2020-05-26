@@ -43,6 +43,10 @@ body {
     margin: .25em;
 }
 
+#totalRoll {
+    height: 10vh;
+}
+
 /* PLAYER COUNT/STATS */
 .statBox {
     margin: auto 0;
@@ -50,12 +54,23 @@ body {
 
 .statTable {
     margin-top: .5em;
+    padding: .5em;
 }
 
 #showTable {
     visibility: hidden;
     /* display: none; */
 }
+/* THIS IS TO CHANGE RANKING DISPLAY */
+.playersSet {}
+#p1Row {}
+#p2Row {}
+#p3Row {}
+#p4Row {}
+#p1 {}
+#p2 {}
+#p3 {}
+#p4 {}
 
 /* DICE TRAY */
 .navSetting {
@@ -80,7 +95,7 @@ body {
 }
 
 #cupRoll {
-    /* background-image: url('./assets/d6Random-red.svg'); */
+    visibility: hidden;
     background-image: url('./assets/d6Random-white.svg');
     height: 5em;
     width: 5em;
