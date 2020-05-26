@@ -63,6 +63,7 @@ body {
 }
 /* THIS IS TO CHANGE RANKING DISPLAY */
 .playersSet {}
+.scoreCountValue {text-align: center;}
 #p1Row {}
 #p2Row {}
 #p3Row {}
