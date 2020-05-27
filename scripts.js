@@ -47,6 +47,7 @@ let dFive;
 let playerBuild = [];
 let isPlayerTurn;
 let turnPos;
+let playerCount;
 
 //! PLAYER SETUP
 
@@ -82,22 +83,22 @@ function playerStats() {
     if (playerCheck === 1) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player One Again!', 'p2', 'p2Row', 2);
-        console.log(playerBuild);
+        console.log('playerStats - playerBuild: ', playerBuild);
     } else if (playerCheck === 2) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player Two', 'p2', 'p2Row', 2);
-        console.log(playerBuild);
+        console.log('playerStats - playerBuild: ', playerBuild);
     } else if (playerCheck === 3) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player Two', 'p2', 'p2Row', 2);
         createElements('Player Three', 'p3', 'p3Row', 3);
-        console.log(playerBuild);
+        console.log('playerStats - playerBuild: ', playerBuild);
     } else if (playerCheck === 4) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player Two', 'p2', 'p2Row', 2);
         createElements('Player Three', 'p3', 'p3Row', 3);
         createElements('Player Four', 'p4', 'p4Row', 4);
-        console.log(playerBuild);
+        console.log('playerStats - playerBuild: ', playerBuild);
     } else {
         null
     }
@@ -107,25 +108,24 @@ function playerStats() {
     cup.style = 'visibility: visible';
 
     //? SET THIS ONCE BANK VALUE IS UPDATING
-    playerTurn(playerCheck)
+    playerCounter(playerCheck, 0)
 }
 
 //! ROLLING FUNCTIONS
 
-function playerTurn(value, pos) {
+function playerCounter(num, bankPos) {
+    playerCount = num;
+    console.log('playerCounter: ', playerCount);
+    // let bankPos = bankPos;
+    turnPos = 1 + bankPos;
+    console.log('playerCounter: turnPos ', turnPos);
+    playerTurn(turnPos);
+}
 
-    let turnPosition = 2;
+function playerTurn(pos) {
 
-    // if (turnPosition === 1) {
-    //     p1Row.style = 'background-color: rgba(255,255,0,.75);';
-    // } else if (turnPosition === 2) {
-    //     p2Row.style = 'background-color: rgba(255,255,0,.75);';
-    // } else if (turnPosition === 3) {
-    //     p3Row.style = 'background-color: rgba(255,255,0,.75);';
-    // } else {
-    //     p4Row.style = 'background-color: rgba(255,255,0,.75);';
-    // }
-
+    let turnPosition = pos;
+    console.log('playerTurn turnPosition: ', turnPosition)
     if (turnPosition === 1) {
         p1Row.style = 'background-color: white; color: black;';
     } else if (turnPosition === 2) {
@@ -135,9 +135,6 @@ function playerTurn(value, pos) {
     } else {
         p4Row.style = 'background-color: white; color: black;';
     }
-
-    let playerCount = value;
-    console.log('Player Count: ', playerCount);
 
     return turnPos = turnPosition;
 
@@ -244,6 +241,11 @@ function bankCount(bankingPlayer) {
     addAmounts(currentValue);
 
     //? THIS SHOULD ALSO CHANGE PLAYERS AFTER BANKING A TOTAL
+    let nextTurn;
+    turnPos === 1 && turnPos === 2 && turnPos ===3 ? 
+        nextTurn = 1 : nextTurn = -2;
+    
+    playerTurn(nextTurn);
 
 }
 

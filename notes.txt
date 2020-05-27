@@ -1,0 +1,8 @@
+Progression notes:
+
+5/27
+- Able to switch from player 1 to player 2
+    - Need to check for player count total and figure how to switch players depending on how many players and what that position looks like.
+    - When swapping player turn, need to clear "counter" so the next player starts at zero.
+    - When swapping player turn, need to reset background-color of row to default.
+    - Need to "highlight" greatest score value regarding position (1st, 2nd, 3rd).
