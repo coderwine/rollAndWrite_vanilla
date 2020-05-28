@@ -2,7 +2,20 @@ Progression notes:
 
 5/27
 - Able to switch from player 1 to player 2
-    - Need to check for player count total and figure how to switch players depending on how many players and what that position looks like.
-    - When swapping player turn, need to clear "counter" so the next player starts at zero.
-    - When swapping player turn, need to reset background-color of row to default.
+    - Need to check for player count total and figure how to switch players depending on how many players and what that position looks like.  DONE
+    - When swapping player turn, need to clear "counter" so the next player starts at zero.  DONE 
+    - When swapping player turn, need to reset background-color of row to default.  DONE
     - Need to "highlight" greatest score value regarding position (1st, 2nd, 3rd).
+
+5/28
+Completed:
+    - After banking totals, value returns to zero.
+    - Able to swap players (4 player) and update the banking total per player position.
+
+Need to Fix:
+    - Need to highlight greatest score value.
+    - Need to adjust player postition depending for a player count of 1-3.
+    - Player scores not banking to correct position when player count is 1-3.
+    - May include a progress bar.
+    - Need to allow for "held dice" after each roll.
+    - May create an NPC for 1 player games.

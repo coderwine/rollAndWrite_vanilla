@@ -48,12 +48,12 @@ let playerBuild = [];
 let isPlayerTurn;
 let turnPos;
 let playerCount;
+let playerCheck;
 
 //! PLAYER SETUP
 
 function playerStats() {
     event.preventDefault();
-    let playerCheck;
 
     playerForm[0].checked === true ? playerCheck = 1 :
         playerForm[1].checked === true ? playerCheck = 2 :
@@ -83,22 +83,22 @@ function playerStats() {
     if (playerCheck === 1) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player One Again!', 'p2', 'p2Row', 2);
-        console.log('playerStats - playerBuild: ', playerBuild);
+        // console.log('playerStats - playerBuild: ', playerBuild);
     } else if (playerCheck === 2) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player Two', 'p2', 'p2Row', 2);
-        console.log('playerStats - playerBuild: ', playerBuild);
+        // console.log('playerStats - playerBuild: ', playerBuild);
     } else if (playerCheck === 3) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player Two', 'p2', 'p2Row', 2);
         createElements('Player Three', 'p3', 'p3Row', 3);
-        console.log('playerStats - playerBuild: ', playerBuild);
+        // console.log('playerStats - playerBuild: ', playerBuild);
     } else if (playerCheck === 4) {
         createElements('Player One', 'p1', 'p1Row', 1);
         createElements('Player Two', 'p2', 'p2Row', 2);
         createElements('Player Three', 'p3', 'p3Row', 3);
         createElements('Player Four', 'p4', 'p4Row', 4);
-        console.log('playerStats - playerBuild: ', playerBuild);
+        // console.log('playerStats - playerBuild: ', playerBuild);
     } else {
         null
     }
@@ -108,6 +108,7 @@ function playerStats() {
     cup.style = 'visibility: visible';
 
     //? SET THIS ONCE BANK VALUE IS UPDATING
+    turnPos = 1;
     playerCounter(playerCheck, 0)
 }
 
@@ -115,11 +116,10 @@ function playerStats() {
 
 function playerCounter(num, bankPos) {
     playerCount = num;
-    console.log('playerCounter: ', playerCount);
-    // let bankPos = bankPos;
-    turnPos = 1 + bankPos;
-    console.log('playerCounter: turnPos ', turnPos);
-    playerTurn(turnPos);
+    // console.log('playerCounter bankPos: ', bankPos)
+    addTurn = turnPos + bankPos;
+    // console.log('playerCounter: addTurn ', addTurn);
+    playerTurn(addTurn);
 }
 
 function playerTurn(pos) {
@@ -128,11 +128,23 @@ function playerTurn(pos) {
     console.log('playerTurn turnPosition: ', turnPosition)
     if (turnPosition === 1) {
         p1Row.style = 'background-color: white; color: black;';
+        p2Row.style = null;
+        p3Row.style = null;
+        p4Row.style = null;
     } else if (turnPosition === 2) {
+        p1Row.style = null;
         p2Row.style = 'background-color: white; color: black;';
+        p3Row.style = null;
+        p4Row.style = null;
     } else if (turnPosition === 3) {
+        p1Row.style = null;
+        p2Row.style = null;
         p3Row.style = 'background-color: white; color: black;';
+        p4Row.style = null;
     } else {
+        p1Row.style = null;
+        p2Row.style = null;
+        p3Row.style = null;
         p4Row.style = 'background-color: white; color: black;';
     }
 
@@ -141,7 +153,6 @@ function playerTurn(pos) {
 };
 
 function cupRoll() {
-    console.log(`It's player ${turnPos} turn / In cupRoll`)
     let roll = 1
     let cup = [];
 
@@ -151,7 +162,7 @@ function cupRoll() {
         console.log(cup)
     }
 
-    console.log(cup[0], cup[1], cup[2], cup[3], cup[4]);
+    // console.log(cup[0], cup[1], cup[2], cup[3], cup[4]);
 
     rollCheck(cup)
     displayRoll(cup[0], cup[1], cup[2], cup[3], cup[4]);
@@ -169,13 +180,13 @@ function rollCheck(rollValue) {
 
     rollValue.map(x => x === 1 ? rollCount.push(100) : x === 5 ? rollCount.push(50) : rollCount.push(0));
 
-    console.log('Roll Check: ', rollCount)
+    // console.log('Roll Check: ', rollCount)
     let total = rollCount[0] +
         rollCount[1] +
         rollCount[2] +
         rollCount[3] +
         rollCount[4];
-    console.log('Total: ', total);
+    // console.log('Total: ', total);
 
     calcRolling(total);
 }
@@ -187,6 +198,7 @@ function bankCount(bankingPlayer) {
     console.log(`In bankCount function: Player ${bankingPlayer}`);
     let currentValue = currentRoll.textContent;
 
+    let resetValue = 0;
     let scorePosition;
     let scoreID;
     let scoreRow;
@@ -197,21 +209,21 @@ function bankCount(bankingPlayer) {
         scoreID = 'p1';
         scoreRow = p1Row;
         scoreRowID = 'p1Row'
-    } else if(bankingPlayer === 2){
+    } else if (bankingPlayer === 2) {
         scorePosition = p2;
         scoreID = 'p2';
         scoreRow = p2Row;
         scoreRowID = 'p2Row'
-    } else if(bankingPlayer === 3){
-        scorePosition = p2;
-        scoreID = 'p2';
-        scoreRow = p2Row;
-        scoreRowID = 'p2Row'
-    } else {        
-        scorePosition = p2;
-        scoreID = 'p2';
-        scoreRow = p2Row;
-        scoreRowID = 'p2Row'
+    } else if (bankingPlayer === 3) {
+        scorePosition = p3;
+        scoreID = 'p3';
+        scoreRow = p3Row;
+        scoreRowID = 'p3Row'
+    } else {
+        scorePosition = p4;
+        scoreID = 'p4';
+        scoreRow = p4Row;
+        scoreRowID = 'p4Row'
     }
 
     p1 = document.getElementById('p1');
@@ -223,29 +235,34 @@ function bankCount(bankingPlayer) {
     p3Row = document.getElementById('p3Row');
     p4Row = document.getElementById('p4Row');
 
-    console.log('Bank Btn: ', currentValue);
-    console.log('scorePosition: ', scorePosition);
-    console.log('scoreID: ', scoreID);
-    console.log('scoreRow: ', scoreRow);
-    console.log('scoreRowID: ', scoreRowID);
-
     let addAmounts = (value) => {
         let bankNumber = Number(scorePosition.textContent);
         let addTo = Number(value)
-        console.log('BANKNUMBER', bankNumber);
         let total = bankNumber + addTo;
-        // console.log('bankValue: ', typeof bankNumber)
-        // console.log('Value: ', typeof addTo)
+        currentRoll.innerHTML = Number(resetValue);
+
         return scorePosition.innerText = total;
     }
     addAmounts(currentValue);
 
-    //? THIS SHOULD ALSO CHANGE PLAYERS AFTER BANKING A TOTAL
+    //* BANKING TOTALS PER PLAYER
+    console.log('bankCount bankingPlayer: ', bankingPlayer)
     let nextTurn;
-    turnPos === 1 && turnPos === 2 && turnPos ===3 ? 
-        nextTurn = 1 : nextTurn = -2;
-    
-    playerTurn(nextTurn);
+
+    if (playerCount === 1 || playerCount === 2) {
+        bankingPlayer === 1 ?
+            nextTurn = 1 : nextTurn = -1
+    } else if (playerCount === 3) {
+        bankingPlayer === 1 || bankingPlayer === 2 ?
+            nextTurn = 1 : nextTurn = -2
+    } else (
+        bankingPlayer === 1 || bankingPlayer === 2 || bankingPlayer === 3 ?
+            nextTurn = 1 : nextTurn = -3
+    );
+
+    console.log('bankCount nextTurn: ', nextTurn)
+
+    playerCounter(playerCount, nextTurn);
 
 }
 
