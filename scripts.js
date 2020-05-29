@@ -116,31 +116,29 @@ function playerStats() {
 
 function playerCounter(num, bankPos) {
     playerCount = num;
-    // console.log('playerCounter bankPos: ', bankPos)
     addTurn = turnPos + bankPos;
-    // console.log('playerCounter: addTurn ', addTurn);
     playerTurn(addTurn);
 }
 
 function playerTurn(pos) {
 
     let turnPosition = pos;
-    console.log('playerTurn turnPosition: ', turnPosition)
+    
     if (turnPosition === 1) {
         p1Row.style = 'background-color: white; color: black;';
         p2Row.style = null;
-        p3Row.style = null;
-        p4Row.style = null;
+        playerCheck === 3 || playerCheck === 4 ? p3Row.style = null : null;
+        playerCheck === 4 ? p4Row.style = null : null;
     } else if (turnPosition === 2) {
         p1Row.style = null;
         p2Row.style = 'background-color: white; color: black;';
-        p3Row.style = null;
-        p4Row.style = null;
+        playerCheck === 3 || playerCheck === 4 ? p3Row.style = null : null;
+        playerCheck === 4 ? p4Row.style = null : null;
     } else if (turnPosition === 3) {
         p1Row.style = null;
         p2Row.style = null;
         p3Row.style = 'background-color: white; color: black;';
-        p4Row.style = null;
+        playerCheck === 4 ? p4Row.style = null : null;
     } else {
         p1Row.style = null;
         p2Row.style = null;
@@ -149,9 +147,10 @@ function playerTurn(pos) {
     }
 
     return turnPos = turnPosition;
-
+ 
 };
 
+//! DICE ROLL
 function cupRoll() {
     let roll = 1
     let cup = [];
@@ -175,6 +174,7 @@ function cupRoll() {
 //     console.log(d);
 // }
 
+//! FIGURING SCORE
 function rollCheck(rollValue) {
     let rollCount = [];
 
@@ -195,7 +195,7 @@ let calcRolling = (total) => currentRoll.innerText = total;
 
 //! Bank Value
 function bankCount(bankingPlayer) {
-    console.log(`In bankCount function: Player ${bankingPlayer}`);
+    // console.log(`bankCount - Player ${bankingPlayer} just banked a value.`);
     let currentValue = currentRoll.textContent;
 
     let resetValue = 0;
@@ -226,14 +226,28 @@ function bankCount(bankingPlayer) {
         scoreRowID = 'p4Row'
     }
 
-    p1 = document.getElementById('p1');
-    p2 = document.getElementById('p2');
-    p3 = document.getElementById('p3');
-    p4 = document.getElementById('p4');
-    p1Row = document.getElementById('p1Row');
-    p2Row = document.getElementById('p2Row');
-    p3Row = document.getElementById('p3Row');
-    p4Row = document.getElementById('p4Row');
+    if(playerCheck === 1 || playerCheck === 2 ){
+        p1 = document.getElementById('p1');
+        p1Row = document.getElementById('p1Row');
+        p2 = document.getElementById('p2');
+        p2Row = document.getElementById('p2Row');
+    } else if (playerCheck === 3){
+        p1 = document.getElementById('p1');
+        p1Row = document.getElementById('p1Row');
+        p2 = document.getElementById('p2');
+        p2Row = document.getElementById('p2Row');
+        p3 = document.getElementById('p3');
+        p3Row = document.getElementById('p3Row');
+    } else if(playerCheck === 4) {
+        p1 = document.getElementById('p1');
+        p1Row = document.getElementById('p1Row');
+        p2 = document.getElementById('p2');
+        p2Row = document.getElementById('p2Row');
+        p3 = document.getElementById('p3');
+        p3Row = document.getElementById('p3Row');
+        p4 = document.getElementById('p4');
+        p4Row = document.getElementById('p4Row');
+    }
 
     let addAmounts = (value) => {
         let bankNumber = Number(scorePosition.textContent);
@@ -246,7 +260,7 @@ function bankCount(bankingPlayer) {
     addAmounts(currentValue);
 
     //* BANKING TOTALS PER PLAYER
-    console.log('bankCount bankingPlayer: ', bankingPlayer)
+    // console.log('bankCount bankingPlayer: ', bankingPlayer)
     let nextTurn;
 
     if (playerCount === 1 || playerCount === 2) {
@@ -260,10 +274,93 @@ function bankCount(bankingPlayer) {
             nextTurn = 1 : nextTurn = -3
     );
 
-    console.log('bankCount nextTurn: ', nextTurn)
+    // console.log('bankCount nextTurn: ', nextTurn)
 
     playerCounter(playerCount, nextTurn);
 
+    //! HIGH SCORE CHECK 
+    function checkScore() {
+        let one = Number(p1.textContent);
+        let two = Number(p2.textContent);
+        let three = Number(p3.textContent);
+        let four = Number(p4.textContent);
+        
+        //? FIRST PLACE
+                if (one >= two && one >= three && one >= four) {
+            p1.style = "color: lightgreen; background-color: darkgreen";  
+                
+            one === two ? 
+                p2.style = "color: lightgreen; background-color: darkgreen" : 
+            p2.style = null;
+            
+            playerCheck === 3 || playerCheck === 4 ? 
+                one === three ? 
+                    p3.style = "color: lightgreen; background-color: darkgreen" : 
+                p3.style = null : 
+            null
+            
+            playerCheck === 4 ? 
+                one === four ? 
+                    p4.style = "color: lightgreen; background-color: darkgreen" : 
+                p4.style = null : 
+            null;
+        }  
+        if (two >= one && two >= three && two >= four) {
+            two === one ? 
+                p1.style = "color: lightgreen; background-color: darkgreen" : 
+            p1.style = null;
+
+            p2.style = "color: lightgreen; background-color: darkgreen";
+
+            playerCheck === 3 || playerCheck === 4 ? 
+                two === three ? 
+                    p3.style = "color: lightgreen; background-color: darkgreen" : 
+                p3.style = null : 
+            null
+
+            playerCheck === 4 ? 
+                two === four ? 
+                    p4.style = "color: lightgreen; background-color: darkgreen" : 
+                p4.style = null : 
+            null;
+        } 
+        if (three >= one && three >= two && three >= four) {
+            three === one ? 
+                p1.style = "color: lightgreen; background-color: darkgreen" : 
+            p1.style = null;
+
+            three === two ? 
+                p2.style = "color: lightgreen; background-color: darkgreen" : 
+            p2.style = null;
+
+            p3.style = "color: lightgreen; background-color: darkgreen"
+
+            playerCheck === 4 ? 
+                three === 4 ? 
+                    p4.style = "color: lightgreen; background-color: darkgreen" : 
+                p4.style = null : 
+            null;
+        }
+
+        if (four >= one && four >= two && four >= three){
+            four === one ? 
+                p1.style = "color: lightgreen; background-color: darkgreen" :
+            p1.style = null;
+
+            four === two ? 
+                p2.style = "color: lightgreen; background-color: darkgreen" : 
+            p2.style = null;
+
+            four === three ? 
+                p3.style = "color: lightgreen; background-color: darkgreen" : 
+            p3.style = null;
+
+            p4.style = "color: lightgreen; background-color: darkgreen";
+        } 
+
+    }
+
+    checkScore();
 }
 
 //! DISPLAY CUP
