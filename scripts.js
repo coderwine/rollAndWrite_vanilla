@@ -178,7 +178,9 @@ function cupRoll() {
 function rollCheck(rollValue) {
     let rollCount = [];
 
+    //? CONSIDER SWITCH STATEMENT TO CHECK AGAINST THE ROLL
     rollValue.map(x => x === 1 ? rollCount.push(100) : x === 5 ? rollCount.push(50) : rollCount.push(0));
+
 
     // console.log('Roll Check: ', rollCount)
     let total = rollCount[0] +
