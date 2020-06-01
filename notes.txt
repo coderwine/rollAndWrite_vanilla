@@ -39,3 +39,7 @@ Need to Fix:
             * straight
             * full house
             * single counts (1, 5)
+6/1
+WIP: 
+    - Currently have the frame of checking against a roll and injecting it into a function to return the desired results.  Parsing through rolls of 3 to return the desired value (value * 100 or 1 * 1000).
+        - This frame is easily converted to fives but will need to pass a full house prior to moving into 3's and 5's.
