@@ -150,6 +150,7 @@ function playerTurn(pos) {
  
 };
 
+//?-------------------------------------------------------------?//
 //! DICE ROLL
 function cupRoll() {
     let roll = 1
@@ -161,39 +162,30 @@ function cupRoll() {
         console.log(cup)
     }
 
-    // console.log(cup[0], cup[1], cup[2], cup[3], cup[4]);
-
     rollCheck(cup)
     displayRoll(cup[0], cup[1], cup[2], cup[3], cup[4]);
 
 };
 
-// let singleRoll =(d) => {
-// ? This is for solo rolls
-//     let d = Math.floor((Math.random() * 6) + 1);
-//     console.log(d);
-// }
-
 //! FIGURING SCORE
-function rollCheck(rollValue) {
+function rollCheck(rollValue) {  //coming from cupRoll
     let rollCount = [];
 
     //? CONSIDER SWITCH STATEMENT TO CHECK AGAINST THE ROLL
     rollValue.map(x => x === 1 ? rollCount.push(100) : x === 5 ? rollCount.push(50) : rollCount.push(0));
 
-
-    // console.log('Roll Check: ', rollCount)
     let total = rollCount[0] +
         rollCount[1] +
         rollCount[2] +
         rollCount[3] +
         rollCount[4];
-    // console.log('Total: ', total);
 
     calcRolling(total);
 }
 
 let calcRolling = (total) => currentRoll.innerText = total;
+
+//?-------------------------------------------------------------?//
 
 //! Bank Value
 function bankCount(bankingPlayer) {

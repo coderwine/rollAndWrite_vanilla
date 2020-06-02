@@ -39,6 +39,7 @@ Need to Fix:
             * straight
             * full house
             * single counts (1, 5)
+            * need to BUST if no value adds to the counter
 6/1
 WIP: 
     - Currently have the frame of checking against a roll and injecting it into a function to return the desired results.  Parsing through rolls of 3 to return the desired value (value * 100 or 1 * 1000).
@@ -49,3 +50,6 @@ WIP:
     - Need to store positions of each dice and their values. 
     - What kind of array methods can I utilize to parse the information and compare for the scoring system?
         - Need to consider when a player "holds" a die value for banking.  
+
+    - Created a secondTest.js to try and build a cleaner versioning that mimicks what is currently in the semi-working build.
+    - May need to work inside of the actual file to incorporate the held aspects of the dice and build those "held" items into a score attribute.

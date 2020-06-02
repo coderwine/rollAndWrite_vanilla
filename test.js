@@ -6,11 +6,6 @@ let d3;
 let d4;
 let d5;
 
-// let threeOfaKind = 0;
-// let fiveOfaKind = 0;
-// let straight = 0;
-// let fullHouse = 0;
-
 let scoreSubTotal = [];
 let scoreTotal;
 
@@ -44,7 +39,7 @@ function checkScore(roll) {
     let six = [];
     
     for (dice of roll) {
-        // console.log('for of: ', dice)
+
         switch (true) {
             case (dice === 1):
                 one.push(dice);
@@ -74,10 +69,10 @@ function checkScore(roll) {
     console.log('newCup: ',newCup);
 
     newCup.forEach(function(num, index) {
-        console.log('forEach prior: ', num, index);
-        num === 0 ? newCup.splice(num, index) : null;
-        // console.log('forEach: ', newCup);
+        // console.log('forEach prior: ', num, index);
+        num < 1 ? newCup.splice(index, 1) : null;
     });
+
     console.log('after forEach: ', newCup);
 
     let singles = [];
@@ -97,7 +92,7 @@ function checkScore(roll) {
         } else {
             // console.log('check: ', check[0]);
             singles.push(check[0]);
-            console.log('check singles: ', singles);
+            // console.log('check singles: ', singles);
         }
     }
 
@@ -157,5 +152,4 @@ checkScore(cup);
 // console.log('Straight: ', straight)
 // console.log('Full House: ', fullHouse);
 console.log('scoreSubTotal: ', scoreSubTotal);
-
 
