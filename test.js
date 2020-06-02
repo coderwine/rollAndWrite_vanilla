@@ -1,5 +1,10 @@
 let rollNum = 1;
 let cup = [];
+let d1;
+let d2;
+let d3;
+let d4;
+let d5;
 
 // let threeOfaKind = 0;
 // let fiveOfaKind = 0;
@@ -19,6 +24,18 @@ console.log('Cup: ', cup);
 
 function checkScore(roll) {
 
+    d1 = roll[0];
+    d2 = roll[1];
+    d3 = roll[2];
+    d4 = roll[3];
+    d5 = roll[4];
+
+    // console.log('checkscore Dice Position: d1 ', d1);
+    // console.log('checkscore Dice Position: d2 ', d2);
+    // console.log('checkscore Dice Position: d3 ', d3);
+    // console.log('checkscore Dice Position: d4 ', d4);
+    // console.log('checkscore Dice Position: d5 ', d5);
+
     let one = [];
     let two = [];
     let three = [];
@@ -27,7 +44,7 @@ function checkScore(roll) {
     let six = [];
     
     for (dice of roll) {
-
+        // console.log('for of: ', dice)
         switch (true) {
             case (dice === 1):
                 one.push(dice);
@@ -54,6 +71,14 @@ function checkScore(roll) {
     }; // checking invidivual dice and store them into a set array.
 
     let newCup = [one, two, three, four, five, six];
+    console.log('newCup: ',newCup);
+
+    newCup.forEach(function(num, index) {
+        console.log('forEach prior: ', num, index);
+        num === 0 ? newCup.splice(num, index) : null;
+        // console.log('forEach: ', newCup);
+    });
+    console.log('after forEach: ', newCup);
 
     let singles = [];
     let pair = [];
@@ -70,8 +95,9 @@ function checkScore(roll) {
         } else if (check.lenth === 5) {
             quintuple = check[0];
         } else {
-            console.log('check: ', check)
-            singles.push(check);
+            // console.log('check: ', check[0]);
+            singles.push(check[0]);
+            console.log('check singles: ', singles);
         }
     }
 
@@ -79,11 +105,12 @@ function checkScore(roll) {
 
         for(let i = 0; i < singles.length; i++) {
 
-            if(singles[i][0] === undefined) {
+            // if(singles[i][0] === undefined) {
+            if(singles[i] === undefined) {
                 null
-            }else if(singles[i][0] === 1) {
+            }else if(singles[i] === 1) {
                 scoreSubTotal.push(100);
-            } else if(singles[i][0] === 5) {
+            } else if(singles[i] === 5) {
                 scoreSubTotal.push(50);
             } else {
                 scoreSubTotal.push(0);
@@ -108,17 +135,15 @@ function checkScore(roll) {
             } else {
                 scoreSubTotal.push(0);
             }
-
-
             
         }
 
         function fives(allFive) {
-            console.log(allFive)
+            console.log('allFive: ',allFive)
             allFive === 1 ? scoreSubTotal.push(10000) : scoreSubTotal.push(allFive * 1000);
         };
     
-    fives(quintuple)
+    quintuple > 0 ? fives(quintuple) : null;
     fullHouse(pair, triplets);
 
 

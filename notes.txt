@@ -44,3 +44,8 @@ WIP:
     - Currently have the frame of checking against a roll and injecting it into a function to return the desired results.  Parsing through rolls of 3 to return the desired value (value * 100 or 1 * 1000).
         - This frame is easily converted to fives but will need to pass a full house prior to moving into 3's and 5's.
         - Currently able to to store values into a subTotal variable.  Pulling in 6 values into the array and need to correct it so only proper values are calculated.
+6/2
+WIP:
+    - Need to store positions of each dice and their values. 
+    - What kind of array methods can I utilize to parse the information and compare for the scoring system?
+        - Need to consider when a player "holds" a die value for banking.  
