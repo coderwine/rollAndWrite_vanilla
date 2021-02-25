@@ -53,3 +53,23 @@ WIP:
 
     - Created a secondTest.js to try and build a cleaner versioning that mimicks what is currently in the semi-working build.
     - May need to work inside of the actual file to incorporate the held aspects of the dice and build those "held" items into a score attribute.
+6/3
+Considering:
+    - Need to step through each process of how the dice are being rolled.
+
+    Once a Player Turn starts
+    1.  Cup roll
+        - Checks individual Dice values for anything greater than 0.  
+            - If a die has a value greater than 0 
+                - Allows only X (die that are at 0) amount of dice to roll (randomize).
+                - Push HELD VALUE in CUP ARRAY position for die that are NOT being rolled so that it cannot be used
+        - Generates an array of X random values (1-6).    
+    2.  Set values to particular individual dice that parses through the CUP ROLL ARRAY (pos 0-4 as there is X separate dice).
+    3.  A score check of CUP ROLL ARRAY evaluated to be sure a score is possible.  
+        - If not possible, return BUST! and moves on to the next player.
+            - Clear HELD ARRAY.
+            - Clear INDIVIDUAL DICE variables.
+        - If possible, return SELECT DICE! and allow player to hold individual dice.
+    4.  Player selects the dice they want to HOLD. 
+        - Build HELD ARRAY.
+    5.  HELD ARRAY stores a NON-BANKED score.  
